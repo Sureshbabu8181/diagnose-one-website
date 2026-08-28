@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Diagnose One - Professional diagnostics tool for Mac, Android, and Windows. System health, battery, storage, network, and performance analysis.">
+  <title>Diagnose One - Diagnose. Analyze. Optimize.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header / Navbar -->
+  <header class="navbar" id="navbar">
+    <div class="container navbar__inner">
+      <a href="#" class="navbar__logo">
+        <img src="assets/logo.png" alt="Diagnose One Logo" class="logo-img"> Diagnose One
+      </a>
+      <nav class="navbar__links" id="navLinks">
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#platforms" class="nav-link">Platforms</a>
+        <a href="#how-it-works" class="nav-link">How It Works</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+      </nav>
+      <a href="#platforms" class="btn btn--primary navbar__cta">Download</a>
+      <button class="navbar__toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero__bg">
+      <div class="hero__orb hero__orb--1"></div>
+      <div class="hero__orb hero__orb--2"></div>
+      <div class="hero__orb hero__orb--3"></div>
+    </div>
+    <div class="container hero__inner">
+      <div class="hero__content">
+        <span class="hero__badge">v2.0 &mdash; Now with AI-powered insights</span>
+        <h1 class="hero__title">Diagnose.<br>Analyze.<br><span class="gradient-text">Optimize.</span></h1>
+        <p class="hero__subtitle">Professional diagnostics for Mac, Android, and Windows. Monitor system health, detect issues, and boost performance &mdash; all in one powerful tool.</p>
+        <div class="hero__actions">
+          <a href="#platforms" class="btn btn--primary btn--lg">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Free
+          </a>
+          <a href="#features" class="btn btn--ghost btn--lg">Explore Features</a>
+        </div>
+        <div class="hero__platforms">
+          <span class="hero__platform" title="macOS">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            macOS
+          </span>
+          <span class="hero__platform" title="Windows">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M3 12V6.75l6-1.32v6.48L3 12zm6.58-6.6L20.5 4v8.03l-10.92.03V5.4zM20.5 12.5V20l-10.92-1.53V12.5H20.5zM9 12.53l-6 .01V19.5L9 18.15v-5.62z"/></svg>
+            Windows
+          </span>
+          <span class="hero__platform" title="Android">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18c0 .55.45 1 1 1h1v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h2v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h1c.55 0 1-.45 1-1V8H6v10zM3.5 8C2.67 8 2 8.67 2 9.5v7c0 .83.67 1.5 1.5 1.5S5 17.33 5 16.5v-7C5 8.67 4.33 8 3.5 8zm17 0c-.83 0-1.5.67-1.5 1.5v7c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-7c0-.83-.67-1.5-1.5-1.5zM15.53 2.16l1.3-1.3c.2-.2.2-.51 0-.71-.2-.2-.51-.2-.71 0l-1.48 1.48A5.965 5.965 0 0012 1c-.96 0-1.86.23-2.66.63L7.85.15c-.2-.2-.51-.2-.71 0-.2.2-.2.51 0 .71l1.31 1.31A5.953 5.953 0 006 7h12c0-2.12-1.08-3.99-2.47-5.16l-.01-.01v-.01l.01-.82zM10 5H9V4h1v1zm5 0h-1V4h1v1z"/></svg>
+            Android
+          </span>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <div class="dashboard-mockup">
+          <div class="mockup-header">
+            <div class="mockup-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <span class="mockup-title">Diagnose One Dashboard</span>
+          </div>
+          <div class="mockup-body">
+            <div class="mockup-stat">
+              <div class="stat-ring stat-ring--green"></div>
+              <div>
+                <span class="stat-label">CPU Health</span>
+                <span class="stat-value">94%</span>
+              </div>
+            </div>
+            <div class="mockup-stat">
+              <div class="stat-ring stat-ring--blue"></div>
+              <div>
+                <span class="stat-label">Memory</span>
+                <span class="stat-value">67%</span>
+              </div>
+            </div>
+            <div class="mockup-stat">
+              <div class="stat-ring stat-ring--orange"></div>
+              <div>
+                <span class="stat-label">Storage</span>
+                <span class="stat-value">82%</span>
+              </div>
+            </div>
+            <div class="mockup-bar">
+              <div class="bar-label">Network Speed</div>
+              <div class="bar-track"><div class="bar-fill" style="width:75%"></div></div>
+            </div>
+            <div class="mockup-bar">
+              <div class="bar-label">Battery</div>
+              <div class="bar-track"><div class="bar-fill bar-fill--green" style="width:88%"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Features</span>
+        <h2 class="section-title">Everything you need to<br><span class="gradient-text">diagnose your devices</span></h2>
+        <p class="section-subtitle">Comprehensive diagnostics with one-click scanning and actionable insights.</p>
+      </div>
+      <div class="features__grid">
+
+        <div class="feature-card" data-reveal>
+          <div class="feature-card__icon feature-card__icon--purple">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/></svg>
+          </div>
+          <h3 class="feature-card__title">System Health Check</h3>
+          <p class="feature-card__desc">Monitor CPU, RAM, and disk usage in real-time. Get detailed reports on system performance and health scores.</p>
+        </div>
+
+        <div class="feature-card" data-reveal>
+          <div class="feature-card__icon feature-card__icon--green">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M12 18h.01"/><path d="M8 6h8M8 10h8"/></svg>
+          </div>
+          <h3 class="feature-card__title">Battery Diagnostics</h3>
+          <p class="feature-card__desc">Check battery health, cycle count, and estimated lifespan. Get alerts when battery degradation is detected.</p>
+        </div>
+
+        <div class="feature-card" data-reveal>
+          <div class="feature-card__icon feature-card__icon--blue">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12H2M5.45 5.11L2 12v6a2 2 0 002 2h16a2 2 0 002-2v-6l-3.45-6.89A2 2 0 0016.76 4H7.24a2 2 0 00-1.79 1.11z"/><line x1="6" y1="16" x2="6.01" y2="16"/><line x1="10" y1="16" x2="10.01" y2="16"/></svg>
+          </div>
+          <h3 class="feature-card__title">Storage Analysis</h3>
+          <p class="feature-card__desc">Visualize disk usage, find large files, and identify duplicates. Get smart cleanup recommendations.</p>
+        </div>
+
+        <div class="feature-card" data-reveal>
+          <div class="feature-card__icon feature-card__icon--cyan">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0114.08 0M1.42 9a16 16 0 0121.16 0M8.53 16.11a6 6 0 016.95 0M12 20h.01"/></svg>
+          </div>
+          <h3 class="feature-card__title">Network Testing</h3>
+          <p class="feature-card__desc">Run speed tests, check DNS resolution, and diagnose connectivity issues with detailed network reports.</p>
+        </div>
+
+        <div class="feature-card" data-reveal>
+          <div class="feature-card__icon feature-card__icon--orange">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <h3 class="feature-card__title">Performance Benchmark</h3>
+          <p class="feature-card__desc">Benchmark your device against others. Test CPU, GPU, and memory performance with industry-standard tests.</p>
+        </div>
+
+        <div class="feature-card" data-reveal>
+          <div class="feature-card__icon feature-card__icon--red">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <h3 class="feature-card__title">Malware Scan</h3>
+          <p class="feature-card__desc">Detect threats, adware, and potentially unwanted programs. Keep your device clean and secure.</p>
+        </div>
+
+        <div class="feature-card" data-reveal>
+          <div class="feature-card__icon feature-card__icon--yellow">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a4 4 0 00-8 0v2"/><path d="M12 12v.01"/></svg>
+          </div>
+          <h3 class="feature-card__title">Driver Check</h3>
+          <p class="feature-card__desc">Verify driver status, check for updates, and resolve compatibility issues across all connected devices.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Platform Section -->
+  <section class="platforms" id="platforms">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Platforms</span>
+        <h2 class="section-title">Available for<br><span class="gradient-text">your favorite devices</span></h2>
+        <p class="section-subtitle">Download Diagnose One for your platform and start diagnosing in seconds.</p>
+      </div>
+      <div class="platforms__grid">
+
+        <div class="platform-card platform-card--mac" data-reveal>
+          <div class="platform-card__icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          </div>
+          <h3 class="platform-card__title">macOS</h3>
+          <p class="platform-card__version">Requires macOS 12.0+</p>
+          <ul class="platform-card__features">
+            <li>Full system diagnostics</li>
+            <li>Battery health monitoring</li>
+            <li>Storage optimization</li>
+            <li>Network analysis</li>
+          </ul>
+          <a href="#" class="btn btn--mac btn--block">Download for Mac</a>
+        </div>
+
+        <div class="platform-card platform-card--windows platform-card--featured" data-reveal>
+          <div class="platform-card__badge">Most Popular</div>
+          <div class="platform-card__icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor"><path d="M3 12V6.75l6-1.32v6.48L3 12zm6.58-6.6L20.5 4v8.03l-10.92.03V5.4zM20.5 12.5V20l-10.92-1.53V12.5H20.5zM9 12.53l-6 .01V19.5L9 18.15v-5.62z"/></svg>
+          </div>
+          <h3 class="platform-card__title">Windows</h3>
+          <p class="platform-card__version">Requires Windows 10+</p>
+          <ul class="platform-card__features">
+            <li>Driver management</li>
+            <li>Malware protection</li>
+            <li>Performance benchmarks</li>
+            <li>Registry diagnostics</li>
+          </ul>
+          <a href="#" class="btn btn--windows btn--block">Download for Windows</a>
+        </div>
+
+        <div class="platform-card platform-card--android" data-reveal>
+          <div class="platform-card__icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18c0 .55.45 1 1 1h1v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h2v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h1c.55 0 1-.45 1-1V8H6v10zM3.5 8C2.67 8 2 8.67 2 9.5v7c0 .83.67 1.5 1.5 1.5S5 17.33 5 16.5v-7C5 8.67 4.33 8 3.5 8zm17 0c-.83 0-1.5.67-1.5 1.5v7c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-7c0-.83-.67-1.5-1.5-1.5zM15.53 2.16l1.3-1.3c.2-.2.2-.51 0-.71-.2-.2-.51-.2-.71 0l-1.48 1.48A5.965 5.965 0 0012 1c-.96 0-1.86.23-2.66.63L7.85.15c-.2-.2-.51-.2-.71 0-.2.2-.2.51 0 .71l1.31 1.31A5.953 5.953 0 006 7h12c0-2.12-1.08-3.99-2.47-5.16l-.01-.01v-.01l.01-.82zM10 5H9V4h1v1zm5 0h-1V4h1v1z"/></svg>
+          </div>
+          <h3 class="platform-card__title">Android</h3>
+          <p class="platform-card__version">Requires Android 8.0+</p>
+          <ul class="platform-card__features">
+            <li>Battery optimization</li>
+            <li>Storage cleanup</li>
+            <li>Network diagnostics</li>
+            <li>App performance</li>
+          </ul>
+          <a href="#" class="btn btn--android btn--block">Download for Android</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">How It Works</span>
+        <h2 class="section-title">Up and running in<br><span class="gradient-text">three simple steps</span></h2>
+      </div>
+      <div class="steps">
+        <div class="step" data-reveal>
+          <div class="step__number">01</div>
+          <div class="step__content">
+            <h3 class="step__title">Download & Install</h3>
+            <p class="step__desc">Download Diagnose One for your platform. Installation takes less than 30 seconds with no bloatware.</p>
+          </div>
+        </div>
+        <div class="step__connector"></div>
+        <div class="step" data-reveal>
+          <div class="step__number">02</div>
+          <div class="step__content">
+            <h3 class="step__title">Run a Scan</h3>
+            <p class="step__desc">Click one button to scan your entire system. Our AI engine analyzes hardware, software, and network health.</p>
+          </div>
+        </div>
+        <div class="step__connector"></div>
+        <div class="step" data-reveal>
+          <div class="step__number">03</div>
+          <div class="step__content">
+            <h3 class="step__title">Fix & Optimize</h3>
+            <p class="step__desc">Review detailed reports and apply one-click fixes. Keep your device running at peak performance.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">FAQ</span>
+        <h2 class="section-title">Got <span class="gradient-text">questions?</span></h2>
+        <p class="section-subtitle">Find answers to common questions about Diagnose One.</p>
+      </div>
+      <div class="faq__list">
+
+        <div class="faq-item" data-reveal>
+          <button class="faq-item__trigger">
+            <span>Is Diagnose One free to use?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-item__content">
+            <p>Yes! Diagnose One offers a free tier with essential diagnostics features. A Pro plan is available for advanced features like AI-powered insights, automated fixes, and priority support.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-reveal>
+          <button class="faq-item__trigger">
+            <span>Does it work offline?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-item__content">
+            <p>Most diagnostics features work fully offline. Network testing and cloud-based malware scanning require an internet connection.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-reveal>
+          <button class="faq-item__trigger">
+            <span>Is my data safe and private?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-item__content">
+            <p>Absolutely. All diagnostics run locally on your device. We never collect, store, or transmit your personal data. Your privacy is our top priority.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-reveal>
+          <button class="faq-item__trigger">
+            <span>What devices are supported?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-item__content">
+            <p>Diagnose One supports macOS 12.0+, Windows 10/11, and Android 8.0+. We're working on iOS and Linux support coming soon.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-reveal>
+          <button class="faq-item__trigger">
+            <span>Can I schedule automatic scans?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-item__content">
+            <p>Yes! Pro users can schedule daily, weekly, or monthly scans. Diagnose One will run in the background and notify you of any issues.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-box" data-reveal>
+        <h2 class="cta-box__title">Ready to optimize your device?</h2>
+        <p class="cta-box__desc">Join 2M+ users who trust Diagnose One to keep their devices running smoothly.</p>
+        <div class="cta-box__actions">
+          <a href="#platforms" class="btn btn--primary btn--lg">Download Diagnose One Free</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="#" class="navbar__logo">
+          <img src="assets/logo.png" alt="Diagnose One Logo" class="logo-img"> Diagnose One
+        </a>
+        <p class="footer__tagline">Professional diagnostics for Mac, Android, and Windows.</p>
+      </div>
+      <div class="footer__links">
+        <div class="footer__col">
+          <h4>Product</h4>
+          <a href="#features">Features</a>
+          <a href="#platforms">Download</a>
+          <a href="#">Changelog</a>
+          <a href="#">Roadmap</a>
+        </div>
+        <div class="footer__col">
+          <h4>Resources</h4>
+          <a href="#">Documentation</a>
+          <a href="#">Blog</a>
+          <a href="#">Support</a>
+          <a href="#faq">FAQ</a>
+        </div>
+        <div class="footer__col">
+          <h4>Company</h4>
+          <a href="#">About</a>
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="container">
+        <p>&copy; 2026 Diagnose One. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
