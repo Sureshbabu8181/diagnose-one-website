@@ -1,4 +1,30 @@
 // ===========================
+// Theme Switcher
+// ===========================
+const themeButtons = document.querySelectorAll('.theme-btn');
+const html = document.documentElement;
+
+// Load saved theme or default to blue
+const savedTheme = localStorage.getItem('theme') || 'blue';
+html.setAttribute('data-theme', savedTheme);
+updateActiveButton(savedTheme);
+
+themeButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const theme = btn.getAttribute('data-theme');
+    html.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    updateActiveButton(theme);
+  });
+});
+
+function updateActiveButton(theme) {
+  themeButtons.forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-theme') === theme);
+  });
+}
+
+// ===========================
 // Navbar Scroll Effect
 // ===========================
 const navbar = document.getElementById('navbar');
