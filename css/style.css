@@ -186,11 +186,47 @@ img {
 }
 
 /* ===========================
+   Keyframe Animations
+   =========================== */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 4px 20px var(--accent-glow); }
+  50% { box-shadow: 0 4px 35px var(--accent-glow), 0 0 60px rgba(var(--accent-rgb), 0.2); }
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+
+@keyframes ripple {
+  0% { transform: scale(0); opacity: 0.6; }
+  100% { transform: scale(4); opacity: 0; }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes icon-bounce {
+  0%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-4px); }
+  60% { transform: translateY(-2px); }
+}
+
+@keyframes border-flow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* ===========================
    Buttons
    =========================== */
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   padding: 12px 24px;
   font-family: var(--font-body);
@@ -199,74 +235,201 @@ img {
   border: none;
   border-radius: var(--radius);
   cursor: pointer;
-  transition: var(--transition);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
+  position: relative;
+  overflow: hidden;
 }
 
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.btn:active {
+  transform: scale(0.97) !important;
+}
+
+/* Primary Button */
 .btn--primary {
   background: var(--accent-gradient);
+  background-size: 200% 200%;
   color: #fff;
   box-shadow: 0 4px 20px var(--accent-glow);
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.btn--primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+  transition: none;
 }
 
 .btn--primary:hover {
-  opacity: 0.9;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px var(--accent-glow);
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 35px var(--accent-glow), 0 0 50px rgba(var(--accent-rgb), 0.25);
+  animation: gradient-shift 2s ease infinite;
 }
 
+.btn--primary:hover::before {
+  animation: shimmer 0.7s ease forwards;
+}
+
+/* Ghost Button */
 .btn--ghost {
   background: transparent;
   color: var(--text-secondary);
   border: 1px solid var(--border);
 }
 
-.btn--ghost:hover {
-  background: var(--bg-card);
-  color: var(--text);
-  border-color: var(--text-muted);
+.btn--ghost::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent-gradient);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  z-index: -1;
 }
 
+.btn--ghost:hover {
+  color: #fff;
+  border-color: transparent;
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 25px rgba(var(--accent-rgb), 0.2);
+}
+
+.btn--ghost:hover::before {
+  opacity: 1;
+}
+
+/* Large Button */
 .btn--lg {
-  padding: 16px 32px;
+  padding: 18px 36px;
   font-size: 16px;
   border-radius: 14px;
 }
 
+/* Block Button */
 .btn--block {
   width: 100%;
   justify-content: center;
   text-align: center;
 }
 
+/* Mac Button */
 .btn--mac {
-  background: var(--mac);
+  background: linear-gradient(135deg, #1a8cff, #0066dd);
+  background-size: 200% 200%;
   color: #fff;
+  box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
+}
+
+.btn--mac::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
 }
 
 .btn--mac:hover {
-  background: #0066dd;
-  transform: translateY(-2px);
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 30px rgba(0, 122, 255, 0.4);
+  animation: gradient-shift 2s ease infinite;
 }
 
+.btn--mac:hover::before {
+  animation: shimmer 0.7s ease forwards;
+}
+
+.btn--mac:hover svg {
+  animation: icon-bounce 0.5s ease;
+}
+
+/* Windows Button */
 .btn--windows {
-  background: var(--windows);
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+  background-size: 200% 200%;
   color: #fff;
+  box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+}
+
+.btn--windows::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
 }
 
 .btn--windows:hover {
-  background: #0088cc;
-  transform: translateY(-2px);
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 30px rgba(56, 189, 248, 0.4);
+  animation: gradient-shift 2s ease infinite;
 }
 
+.btn--windows:hover::before {
+  animation: shimmer 0.7s ease forwards;
+}
+
+.btn--windows:hover svg {
+  animation: icon-bounce 0.5s ease;
+}
+
+/* Android Button */
 .btn--android {
-  background: var(--android);
+  background: linear-gradient(135deg, #4ade80, #22c55e);
+  background-size: 200% 200%;
   color: #000;
+  box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+}
+
+.btn--android::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
 }
 
 .btn--android:hover {
-  background: #2cc06d;
-  transform: translateY(-2px);
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 30px rgba(34, 197, 94, 0.4);
+  animation: gradient-shift 2s ease infinite;
+}
+
+.btn--android:hover::before {
+  animation: shimmer 0.7s ease forwards;
+}
+
+.btn--android:hover svg {
+  animation: icon-bounce 0.5s ease;
+}
+
+/* Navbar CTA Button */
+.navbar__cta {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.navbar__cta:hover {
+  animation: none;
+  transform: translateY(-2px) scale(1.05);
 }
 
 /* ===========================
