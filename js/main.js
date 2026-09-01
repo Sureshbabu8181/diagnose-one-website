@@ -1,4 +1,55 @@
 // ===========================
+// Platform Detection
+// ===========================
+const platform = detectPlatform();
+const heroDownload = document.getElementById('heroDownload');
+const heroBadge = document.getElementById('heroBadge');
+const navDownload = document.getElementById('navDownload');
+
+const links = {
+  mac: 'https://github.com/Sureshbabu8181/Mac_diagnostic-/releases/download/v1.0.1.2/One-Diagnose-Mac-1.0.1.2.dmg',
+  windows: '#',
+  android: 'https://raw.githubusercontent.com/Sureshbabu8181/Mac_diagnostic-/refs/heads/main/DeviceDiagnostic/app-release-1.1.0.apk',
+  ios: '#'
+};
+
+const labels = {
+  mac: 'Download for Mac',
+  windows: 'Download for Windows',
+  android: 'Download for Android',
+  ios: 'Download for iOS'
+};
+
+function detectPlatform() {
+  const ua = navigator.userAgent.toLowerCase();
+  if (/iphone|ipad|ipod/.test(ua)) return 'ios';
+  if (/android/.test(ua)) return 'android';
+  if (/macintosh|mac os x/.test(ua)) return 'mac';
+  if (/windows/.test(ua)) return 'windows';
+  return 'mac';
+}
+
+if (heroDownload) {
+  heroDownload.href = links[platform] || links.mac;
+  heroDownload.querySelector('svg').nextSibling.textContent = labels[platform] || labels.mac;
+}
+
+if (navDownload) {
+  navDownload.href = links[platform] || links.mac;
+  navDownload.textContent = labels[platform] || labels.mac;
+}
+
+if (heroBadge) {
+  heroBadge.textContent = `Detected: ${platform.charAt(0).toUpperCase() + platform.slice(1)} — v2.0 with AI-powered insights`;
+}
+
+// Highlight matching platform in hero
+const platformEl = document.getElementById('platform' + platform.charAt(0).toUpperCase() + platform.slice(1));
+if (platformEl) {
+  platformEl.classList.add('hero__platform--active');
+}
+
+// ===========================
 // Theme Switcher
 // ===========================
 const themeButtons = document.querySelectorAll('.theme-btn');

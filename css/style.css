@@ -542,6 +542,15 @@ img {
   opacity: 1;
 }
 
+.hero__platform--active {
+  color: var(--accent) !important;
+}
+
+.hero__platform--active svg {
+  opacity: 1;
+  filter: drop-shadow(0 0 8px var(--accent-glow));
+}
+
 /* Dashboard Mockup */
 .hero__visual {
   display: flex;

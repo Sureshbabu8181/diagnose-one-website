@@ -29,7 +29,7 @@
         <button class="theme-btn theme-btn--white" data-theme="white" aria-label="White theme"></button>
         <button class="theme-btn theme-btn--blue active" data-theme="blue" aria-label="Blue theme"></button>
       </div>
-      <a href="#platforms" class="btn btn--primary navbar__cta">Download</a>
+      <a href="#platforms" class="btn btn--primary navbar__cta" id="navDownload">Download</a>
       <button class="navbar__toggle" id="navToggle" aria-label="Toggle menu">
         <span></span>
         <span></span>
@@ -47,26 +47,26 @@
     </div>
     <div class="container hero__inner">
       <div class="hero__content">
-        <span class="hero__badge">v2.0 &mdash; Now with AI-powered insights</span>
+        <span class="hero__badge" id="heroBadge">v2.0 &mdash; Now with AI-powered insights</span>
         <h1 class="hero__title">Diagnose.<br>Analyze.<br><span class="gradient-text">Optimize.</span></h1>
         <p class="hero__subtitle">Professional diagnostics for Mac, Android, and Windows. Monitor system health, detect issues, and boost performance &mdash; all in one powerful tool.</p>
         <div class="hero__actions">
-          <a href="https://github.com/Sureshbabu8181/Mac_diagnostic-/releases/download/v1.0.1.2/One-Diagnose-Mac-1.0.1.2.dmg" class="btn btn--primary btn--lg">
+          <a href="#" class="btn btn--primary btn--lg" id="heroDownload">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             Download Free
           </a>
           <a href="#features" class="btn btn--ghost btn--lg">Explore Features</a>
         </div>
         <div class="hero__platforms">
-          <span class="hero__platform" title="macOS">
+          <span class="hero__platform" id="platformMac" title="macOS">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
             macOS
           </span>
-          <span class="hero__platform" title="Windows">
+          <span class="hero__platform" id="platformWindows" title="Windows">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M3 12V6.75l6-1.32v6.48L3 12zm6.58-6.6L20.5 4v8.03l-10.92.03V5.4zM20.5 12.5V20l-10.92-1.53V12.5H20.5zM9 12.53l-6 .01V19.5L9 18.15v-5.62z"/></svg>
             Windows
           </span>
-          <span class="hero__platform" title="Android">
+          <span class="hero__platform" id="platformAndroid" title="Android">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18c0 .55.45 1 1 1h1v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h2v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h1c.55 0 1-.45 1-1V8H6v10zM3.5 8C2.67 8 2 8.67 2 9.5v7c0 .83.67 1.5 1.5 1.5S5 17.33 5 16.5v-7C5 8.67 4.33 8 3.5 8zm17 0c-.83 0-1.5.67-1.5 1.5v7c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-7c0-.83-.67-1.5-1.5-1.5zM15.53 2.16l1.3-1.3c.2-.2.2-.51 0-.71-.2-.2-.51-.2-.71 0l-1.48 1.48A5.965 5.965 0 0012 1c-.96 0-1.86.23-2.66.63L7.85.15c-.2-.2-.51-.2-.71 0-.2.2-.2.51 0 .71l1.31 1.31A5.953 5.953 0 006 7h12c0-2.12-1.08-3.99-2.47-5.16l-.01-.01v-.01l.01-.82zM10 5H9V4h1v1zm5 0h-1V4h1v1z"/></svg>
             Android
           </span>
@@ -239,7 +239,7 @@
             <li>Network diagnostics</li>
             <li>App performance</li>
           </ul>
-          <a href="#" class="btn btn--android btn--block">Download for Android</a>
+          <a href="https://raw.githubusercontent.com/Sureshbabu8181/Mac_diagnostic-/refs/heads/main/DeviceDiagnostic/app-release-1.1.0.apk" class="btn btn--android btn--block">Download for Android</a>
         </div>
 
       </div>
