@@ -358,6 +358,44 @@ img {
   animation: icon-bounce 0.5s ease;
 }
 
+.mac-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.mac-buttons .btn--mac {
+  width: 100%;
+  justify-content: center;
+}
+
+.btn--arm {
+  background: linear-gradient(135deg, #1a8cff, #0066dd);
+  background-size: 200% 200%;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
+}
+
+.btn--arm:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(0, 122, 255, 0.4);
+  animation: gradient-shift 2s ease infinite;
+}
+
+.btn--intel {
+  background: linear-gradient(135deg, #764abc, #5a32a7);
+  background-size: 200% 200%;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(122, 58, 171, 0.3);
+}
+
+.btn--intel:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(122, 58, 171, 0.4);
+  animation: gradient-shift 2s ease infinite;
+}
+
 /* Windows Button */
 .btn--windows {
   background: linear-gradient(135deg, #38bdf8, #0ea5e9);
