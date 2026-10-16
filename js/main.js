@@ -1,17 +1,25 @@
 // ===========================
+// Encrypted Download Links
+// ===========================
+function decodeUrl(encoded) {
+  return atob(encoded);
+}
+
+document.querySelectorAll('[data-download]').forEach(el => {
+  el.addEventListener('click', (e) => {
+    e.preventDefault();
+    const url = decodeUrl(el.getAttribute('data-download'));
+    window.location.href = url;
+  });
+});
+
+// ===========================
 // Platform Detection
 // ===========================
 const platform = detectPlatform();
 const heroDownload = document.getElementById('heroDownload');
 const heroBadge = document.getElementById('heroBadge');
 const navDownload = document.getElementById('navDownload');
-
-const links = {
-  mac: 'https://github.com/Sureshbabu8181/Mac_diagnostic-/releases/download/v1.0.1.1/One-Diagnose-1.0.1.1-arm64.dmg',
-  windows: 'https://github.com/Sureshbabu8181/Mac_diagnostic-/releases/download/v1.0/WindowsLaptopDiagnostics.exe',
-  android: 'https://raw.githubusercontent.com/Sureshbabu8181/Mac_diagnostic-/refs/heads/main/DeviceDiagnostic/app-release-1.1.0.apk',
-  ios: '#'
-};
 
 const labels = {
   mac: 'Download for Mac',
@@ -30,13 +38,19 @@ function detectPlatform() {
 }
 
 if (heroDownload) {
-  heroDownload.href = links[platform] || links.mac;
-  heroDownload.querySelector('svg').nextSibling.textContent = labels[platform] || labels.mac;
+  const labels2 = {
+    mac: 'Download for Mac',
+    windows: 'Download for Windows',
+    android: 'Download for Android',
+    ios: 'Download for iOS'
+  };
+  const svg = heroDownload.querySelector('svg');
+  if (svg) svg.nextSibling.textContent = labels2[platform] || labels2.mac;
 }
 
 if (navDownload) {
-  navDownload.href = links[platform] || links.mac;
   navDownload.textContent = labels[platform] || labels.mac;
+  navDownload.href = '#downloads';
 }
 
 if (heroBadge) {
