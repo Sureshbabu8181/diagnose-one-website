@@ -8,7 +8,7 @@ const navDownload = document.getElementById('navDownload');
 
 const links = {
   mac: 'https://github.com/Sureshbabu8181/Mac_diagnostic-/releases/download/v1.0.1.1/One-Diagnose-1.0.1.1-arm64.dmg',
-  windows: '#',
+  windows: 'https://github.com/Sureshbabu8181/Mac_diagnostic-/releases/download/v1.0/WindowsLaptopDiagnostics.exe',
   android: 'https://raw.githubusercontent.com/Sureshbabu8181/Mac_diagnostic-/refs/heads/main/DeviceDiagnostic/app-release-1.1.0.apk',
   ios: '#'
 };
