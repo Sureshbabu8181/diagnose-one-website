@@ -360,13 +360,13 @@ img {
 
 .mac-buttons {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 12px;
   margin-top: 20px;
 }
 
 .mac-buttons .btn--mac {
-  width: 100%;
+  flex: 1;
   justify-content: center;
 }
 
