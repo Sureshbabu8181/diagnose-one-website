@@ -79,7 +79,8 @@ function Add-Result([string]$Name, [string]$State, [string]$Detail) {
 function Receive-Installer([string]$Url, [string]$Path) {
     for ($attempt=1; $attempt -le 3; $attempt++) {
         try {
-            Invoke-WebRequest -Uri $Url -OutFile $Path -UseBasicParsing -TimeoutSec 600
+            # NinjaOne's download endpoint can reject the default WindowsPowerShell user agent.
+            Invoke-WebRequest -Uri $Url -OutFile $Path -UseBasicParsing -UserAgent 'Mozilla/5.0' -TimeoutSec 600
             if ((Get-Item -LiteralPath $Path).Length -eq 0) { throw 'Downloaded file is empty.' }
             return
         } catch {

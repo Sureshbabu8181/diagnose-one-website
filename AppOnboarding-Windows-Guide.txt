@@ -93,7 +93,8 @@ Use -NoUser if local accounts are centrally managed. Otherwise pass a SecureStri
 from an approved secure automation variable; do not embed or log the password.
 There is no interactive prompt when running as SYSTEM.
 Allow time for four sequential downloads and installations. MSI busy status
-(1618) is retried. Logs identify the failing step; remaining steps still run.
+(1618) is retried. Downloads use a browser-style user agent because the NinjaOne
+endpoint can return HTTP 403 for the default Windows PowerShell user agent. Logs identify the failing step; remaining steps still run.
 
 WI-FI CLEANUP
 Task name: ShareChat-AppOnboarding-ForgetWifi
