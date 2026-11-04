@@ -1,0 +1,164 @@
+﻿AppOnboarding.ps1 - Windows Onboarding Guide
+
+PURPOSE
+Provision x64 company Windows PCs using an elevated Windows PowerShell 5.1
+session or NinjaOne running as SYSTEM. Internet access is required. This is
+intended for supported Windows client systems with Desktop Experience, the
+LocalAccounts, DISM and ScheduledTasks modules, and Windows Installer available.
+Windows 11 x64 is the recommended pilot target. ARM64 and 32-bit are rejected
+because this package set includes an x64-specific NinjaOne installer.
+
+WHAT IT DOES
+1. Creates or enables the local Admin account and grants administrator rights.
+   A password is requested securely only when creation or an explicit reset is
+   needed. Existing passwords are preserved by default. No password is embedded.
+2. Fetches the current official stable Chrome Enterprise x64 MSI and installs
+   or updates it if newer than the machine-wide installed version.
+3. Fetches Slack's current official x64 MSIX and provisions it machine-wide.
+   Slack is available to existing and new users at their next sign-in. Existing
+   per-user EXE/MSI installations are not automatically removed or migrated.
+4. Installs the supplied OneLogin Desktop Pro MSI (3.4.4.1106), passing
+   SUBDOMAIN=sharechat using OneLogin's documented silent-install property.
+5. Installs the supplied ShareChat-BLR NinjaOne x64 MSI (15.0.10212).
+6. Schedules Wi-Fi cleanup 20 minutes after all four apps have been processed,
+   even when an app or account step fails. Targets only these actual SSIDs:
+   IT Resources, Guest-SC, Guest-External.
+
+Chrome and Slack are checked for a newer release on EVERY installation run.
+They are not pinned to the versions available when this script was authored.
+OneLogin and NinjaOne are skipped if already detected unless -Force is supplied.
+Installed Chrome/Slack versions newer than the downloaded packages are preserved.
+An existing OneLogin installation is not reconfigured unless its installer runs.
+No Sophos installation is included: a Windows Sophos installer must be supplied
+separately. Rosetta is macOS-only and has no corresponding Windows step.
+
+HOW TO RUN LOCALLY
+Open 64-bit Windows PowerShell as Administrator. Use powershell.exe, not pwsh.
+Change directory to the folder containing AppOnboarding.ps1.
+
+Read-only account, application and cleanup-task status:
+  .\AppOnboarding.ps1 -Check
+
+Preview without downloading, installing, creating users or scheduling tasks:
+  .\AppOnboarding.ps1 -DryRun
+
+Run onboarding (prompts securely if an account password is needed):
+  .\AppOnboarding.ps1
+
+Supply a SecureString explicitly:
+  $password = Read-Host 'Local administrator password' -AsSecureString
+  .\AppOnboarding.ps1 -AdminPassword $password
+
+Leave local accounts unchanged:
+  .\AppOnboarding.ps1 -NoUser
+
+Skip selected apps:
+  .\AppOnboarding.ps1 -NoUser -Skip slack,ninja
+
+Rerun the pinned OneLogin/NinjaOne installers:
+  .\AppOnboarding.ps1 -NoUser -Force
+
+Explicitly reset the configured local administrator password:
+  $password = Read-Host 'New local administrator password' -AsSecureString
+  .\AppOnboarding.ps1 -AdminPassword $password -ResetAdminPassword
+
+Do not schedule a new Wi-Fi cleanup:
+  .\AppOnboarding.ps1 -NoUser -NoWifiCleanup
+
+If execution policy blocks an approved downloaded script, inspect and unblock
+the file according to your organization's policy. A process-only invocation
+for an approved script is:
+  powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\AppOnboarding.ps1 -NoUser
+Domain-enforced policy may still apply; the script does not change it.
+
+OPTIONS
+-Check                 Read-only local state; does not check online versions.
+-DryRun                Plan only; no changes or downloads.
+-Skip chrome,slack,... Comma-separated selection: chrome, slack, onelogin, ninja.
+-NoUser                Do not create, enable, promote or reset local accounts.
+-AdminUser NAME        Override the default local account name, Admin.
+-AdminPassword VALUE   SecureString; required non-interactively for creation/reset.
+-ResetAdminPassword    Explicitly reset the existing account password.
+-Force                 Rerun detected OneLogin/NinjaOne installers. This does NOT
+                       reset passwords or force Chrome/Slack downgrades.
+-OneLoginSubdomain     Defaults to sharechat; supply the subdomain without .onelogin.com.
+-NoWifiCleanup         Do not create a new cleanup task. An existing task remains.
+
+RUNNING THROUGH NINJAONE
+Use a Windows PowerShell script automation running as SYSTEM with a 64-bit host.
+If NinjaOne is already managing the PC, use -Skip ninja to avoid reinstalling
+its own running agent. The installer is also suitable for bootstrapping PCs
+before they have NinjaOne installed.
+Use -NoUser if local accounts are centrally managed. Otherwise pass a SecureString
+from an approved secure automation variable; do not embed or log the password.
+There is no interactive prompt when running as SYSTEM.
+Allow time for four sequential downloads and installations. MSI busy status
+(1618) is retried. Logs identify the failing step; remaining steps still run.
+
+WI-FI CLEANUP
+Task name: ShareChat-AppOnboarding-ForgetWifi
+Runs as SYSTEM after 20 minutes, independently of the onboarding session.
+If the PC is off/asleep at the due time, Task Scheduler runs the missed task
+when available. Failures are retried up to three times at five-minute intervals.
+It compares actual SSIDs, even if a profile has a different name, and deletes
+matching profiles through the native Windows Wi-Fi API. It avoids wildcard
+deletion and does not parse localized netsh output.
+Only profiles visible to SYSTEM can be removed; user-private profiles may need
+cleanup in that user's session. Group Policy-managed profiles may prevent
+deletion or be restored by policy. Such errors are written to the cleanup log.
+Forgetting a connected network may interrupt connectivity. A subsequent run
+replaces the prior cleanup task and starts a new 20-minute delay.
+After success, the task and helper script remove themselves; logs are retained.
+-NoUser and -Skip do not disable cleanup; use -NoWifiCleanup for that.
+
+Cancel a pending cleanup if required (elevated PowerShell):
+  Stop-ScheduledTask -TaskName 'ShareChat-AppOnboarding-ForgetWifi'
+  Unregister-ScheduledTask -TaskName 'ShareChat-AppOnboarding-ForgetWifi' -Confirm:$false
+
+LOGS AND RESULTS
+Each installation run creates a unique directory under:
+  C:\ProgramData\ShareChat-AppOnboarding\
+The script prints the full run-directory path at completion.
+Files: onboarding.log, per-app *-msi.log, and wifi-cleanup.log when the task runs.
+Successful downloads are removed; failed downloads and logs are retained.
+This directory is restricted to Administrators and SYSTEM because it contains
+a helper script that will run as SYSTEM.
+
+MSI signatures must be valid and match the expected vendor before execution.
+Windows validates Slack's MSIX signature during provisioning, and the script
+checks its package identity. Organization policies, AppLocker, required package
+dependencies or an older Windows build can block MSIX deployment; inspect logs
+and address the reported issue instead of substituting an old Slack MSI.
+OneLogin initial employee sign-in/account linking must still be completed.
+The script suppresses MSI-initiated reboots and reports a restart requirement.
+
+Exit codes:
+0     All selected steps succeeded, were present or were skipped.
+1     One or more steps failed (also used for prerequisite errors).
+3010  Successful provisioning; an installer reported that a restart is required.
+Wi-Fi SCHEDULED means registration succeeded, not that profiles were deleted yet.
+
+VALIDATION AND ROLLOUT
+Validated on the authoring Mac: PowerShell syntax for main and worker scripts,
+compilation of the native Wi-Fi helper, and mocked checks for MSI switches,
+tenant configuration, retries, failure handling, restart status, signature
+rejection, and protecting newer Chrome versions. All four download endpoints
+responded successfully to HTTP HEAD checks during authoring.
+No Windows installations, account changes, Wi-Fi deletions or scheduled tasks
+were executed during authoring. Pilot on a Windows test PC before broad rollout.
+Check installs, employee sign-in, Slack after sign-out/sign-in, and cleanup logs.
+
+OFFICIAL REFERENCES
+Slack enterprise MSIX deployment:
+https://slack.com/help/articles/212475728-Deploy-Slack-for-Windows
+Chrome Enterprise downloads:
+https://chromeenterprise.google/download/
+OneLogin silent installation and SUBDOMAIN property:
+https://onelogin.service-now.com/kb?id=kb_article_view&sysparm_article=KB0012508
+Microsoft MSIX provisioning:
+https://learn.microsoft.com/windows-hardware/manufacture/desktop/dism-app-package--appx-or-appxbundle--servicing-command-line-options
+
+For ongoing fleet management, deploy this script centrally through NinjaOne
+(or your existing endpoint-management platform) and manage future app updates
+through that platform. This avoids depending on an employee's interactive
+winget session for machine-wide onboarding.
